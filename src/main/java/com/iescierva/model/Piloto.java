@@ -1,11 +1,9 @@
 package com.iescierva.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,8 +13,13 @@ public class Piloto extends Persona{
     @Column(name = "licencia")
     private String licencia;
 
-    @ManyToMany(mappedBy = "pilotos")
-    private Set<Tipo> tipos;
+    @ManyToMany
+    @JoinTable(
+            name = "pilota",
+            joinColumns = @JoinColumn(name = "piloto_nss"),
+            inverseJoinColumns = @JoinColumn(name = "tipo_modelo")
+    )
+    private Set<Tipo> tipos = new HashSet<>();
 
     public Piloto() {
     }
@@ -32,6 +35,14 @@ public class Piloto extends Persona{
 
     public void setLicencia(String licencia) {
         this.licencia = licencia;
+    }
+
+    public Set<Tipo> getTipos() {
+        return tipos;
+    }
+
+    public void setTipos(Set<Tipo> tipos) {
+        this.tipos = tipos;
     }
 
     @Override

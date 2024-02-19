@@ -2,6 +2,7 @@ package com.iescierva.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Hangar {
     private String localizacion;
 
     @OneToMany(mappedBy = "hangar")
-    private Set<Avion> aviones;
+    private Set<Avion> aviones = new HashSet<>();
 
     public Hangar() {
     }

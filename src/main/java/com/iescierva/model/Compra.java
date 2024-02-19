@@ -22,9 +22,9 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(String avionNRegistro, String propietarioNss, LocalDate fechaCompra) {
-        this.avionNRegistro = avionNRegistro;
-        this.propietarioNss = propietarioNss;
+    public Compra(Avion avion, Propietario propietario, LocalDate fechaCompra) {
+        this.avionNRegistro = avion.getnRegistro();
+        this.propietarioNss = propietario.getNss();
         this.fechaCompra = fechaCompra;
     }
 

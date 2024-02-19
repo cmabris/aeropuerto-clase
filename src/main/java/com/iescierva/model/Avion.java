@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,7 +39,7 @@ public class Avion {
             joinColumns = @JoinColumn(name = "avion_n_registro"),
             inverseJoinColumns = @JoinColumn(name = "mecanico_nss")
     )
-    private Set<Mecanico> mecanicos;
+    private Set<Mecanico> mecanicos = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
@@ -46,7 +47,7 @@ public class Avion {
             joinColumns = @JoinColumn(name = "avion_n_registro"),
             inverseJoinColumns = @JoinColumn(name = "propietario_nss")
     )
-    private Set<Propietario> propietarios;
+    private Set<Propietario> propietarios = new HashSet<>();
 
     public Avion() {
     }

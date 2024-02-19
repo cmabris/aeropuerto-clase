@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,7 +19,7 @@ public class Mecanico extends Persona {
     private String turno;
 
     @ManyToMany(mappedBy = "mecanicos")
-    private Set<Avion> aviones;
+    private Set<Avion> aviones = new HashSet<>();
 
     public Mecanico() {
     }
